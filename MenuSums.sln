@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuSums", "MenuSums\MenuSums.csproj", "{DF155BCE-D842-482B-A401-C36B905CDE57}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuSums.Console", "MenuSums.Console\MenuSums.Console.csproj", "{DF155BCE-D842-482B-A401-C36B905CDE57}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuSums.Tests", "MenuSums.Tests\MenuSums.Tests.csproj", "{3E883E72-800F-4171-AE33-8F351AF7F6AE}"
 EndProject
