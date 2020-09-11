@@ -6,9 +6,9 @@ namespace MenuSums
     public static class MenuSummer
     {
         /// <summary>
-        /// Given the file name of a JSON file containing an array of menu objects,
-        /// outputs a list containing sums of ids for each valid item within a
-        /// menu. A menu item is valid if it has a label specified.
+        /// Given a string of JSON containing an array of menu objects, outputs
+        /// a list containing sums of ids for each valid item within a menu. A
+        /// menu item is valid if it has a label specified.
         /// </summary>
         /// <param name="json">JSON string to parse.</param>
         /// <returns>List of id sums.</returns>
