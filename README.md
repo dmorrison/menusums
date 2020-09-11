@@ -4,7 +4,7 @@ My solution to the UTIMCO coding exercise.
 
 # Description
 
-Processes a JSON file contain menu data and sums up menu item ids.
+Processes a JSON file containing menu data and sums up menu item ids.
 
 # Requirements
 
