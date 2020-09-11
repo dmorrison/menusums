@@ -15,12 +15,23 @@ namespace MenuSums
         public static List<int> CalculateSums(string json)
         {
             var counts = new List<int>();
-            using var document = JsonDocument.Parse(json);
+
+            var options = new JsonDocumentOptions { AllowTrailingCommas = true };
+            using var document = JsonDocument.Parse(json, options);
 
             foreach (var element in document.RootElement.EnumerateArray())
             {
                 var count = 0;
-                var items = element.GetProperty("menu").GetProperty("items");
+
+                if (!element.TryGetProperty("menu", out JsonElement menuElement))
+                {
+                    continue;
+                }
+
+                if (!menuElement.TryGetProperty("items", out JsonElement items))
+                {
+                    continue;
+                }
 
                 foreach (var item in items.EnumerateArray())
                 {

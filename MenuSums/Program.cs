@@ -19,6 +19,7 @@ namespace MenuSums
             // TODO: Consider showing a usage error if file specified doesn't exist. As
             // is, a FileNotFoundException will be thrown.
             // TODO: Consider using async version of this method.
+            // TODO: Consider validating that the file size is not too big.
             var json = File.ReadAllText(path);
 
             var sums = MenuSummer.CalculateSums(json);
