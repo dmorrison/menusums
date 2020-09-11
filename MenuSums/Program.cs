@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Text.Json;
 
 namespace MenuSums
 {
@@ -10,38 +9,23 @@ namespace MenuSums
         {
             if (args.Length == 0)
             {
-                Console.WriteLine("No input file given.");
+                Console.WriteLine("Argument for input file was not given.");
 
                 return 1;
             }
 
-            var fileName = args[0];
+            var path = args[0];
 
-            if (!File.Exists(fileName))
+            // TODO: Consider showing a usage error if file specified doesn't exist. As
+            // is, a FileNotFoundException will be thrown.
+            // TODO: Consider using async version of this method.
+            var json = File.ReadAllText(path);
+
+            var sums = MenuSummer.CalculateSums(json);
+
+            foreach (var sum in sums)
             {
-                throw new FileNotFoundException("Input file given was not found.", fileName);
-            }
-
-            using var fileStream = File.OpenRead(fileName);
-            using var document = JsonDocument.Parse(fileStream);
-
-            foreach (var element in document.RootElement.EnumerateArray())
-            {
-                var count = 0;
-                var items = element.GetProperty("menu").GetProperty("items");
-
-                foreach (var item in items.EnumerateArray())
-                {
-                    if (item.ValueKind == JsonValueKind.Null) continue;
-
-                    JsonElement label;
-                    if (!item.TryGetProperty("label", out label)) continue;
-
-                    var id = item.GetProperty("id").GetInt32();
-                    count += id;
-                }
-
-                Console.WriteLine(count);
+                Console.WriteLine(sum);
             }
 
             return 0;
