@@ -35,18 +35,16 @@ namespace MenuSums
 
                 foreach (var item in items.EnumerateArray())
                 {
-                    if (item.ValueKind == JsonValueKind.Null)
+                    // Skip invalid items (null, missing required keys, etc.).
+                    if (item.ValueKind == JsonValueKind.Null
+                        || !item.TryGetProperty("label", out JsonElement label)
+                        || !item.TryGetProperty("id", out JsonElement id)
+                        || !id.TryGetInt32(out int idValue))
                     {
                         continue;
                     }
 
-                    if (!item.TryGetProperty("label", out JsonElement label))
-                    {
-                        continue;
-                    }
-
-                    var id = item.GetProperty("id").GetInt32();
-                    sum += id;
+                    sum += idValue;
                 }
 
                 sums.Add(sum);

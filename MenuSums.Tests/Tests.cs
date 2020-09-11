@@ -75,6 +75,15 @@ namespace MenuSums.Tests
         }
 
         [TestMethod]
+        public void Handles_no_id_key()
+        {
+            var results = MenuSummer.CalculateSums(TestData.NoIdKey);
+
+            Assert.AreEqual(1, results.Count);
+            Assert.AreEqual(0, results[0]);
+        }
+
+        [TestMethod]
         public void Correctly_sums_full_data_set()
         {
             var results = MenuSummer.CalculateSums(TestData.FullDataSet);

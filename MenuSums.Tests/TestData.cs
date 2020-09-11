@@ -183,6 +183,26 @@ namespace MenuSums.Tests
             }
         }
 
+        public static string NoIdKey
+        {
+            get
+            {
+                return @"
+[
+    {
+        ""menu"": {
+            ""header"": ""menu"",
+            ""items"": [
+                {
+                    ""label"": ""Label 70""
+                }
+            ]
+        }
+    }
+]";
+            }
+        }
+
         public static string FullDataSet
         {
             get
