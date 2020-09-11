@@ -14,14 +14,14 @@ namespace MenuSums
         /// <returns>List of id sums.</returns>
         public static List<int> CalculateSums(string json)
         {
-            var counts = new List<int>();
+            var sums = new List<int>();
 
             var options = new JsonDocumentOptions { AllowTrailingCommas = true };
             using var document = JsonDocument.Parse(json, options);
 
             foreach (var element in document.RootElement.EnumerateArray())
             {
-                var count = 0;
+                var sum = 0;
 
                 if (!element.TryGetProperty("menu", out JsonElement menuElement))
                 {
@@ -46,13 +46,13 @@ namespace MenuSums
                     }
 
                     var id = item.GetProperty("id").GetInt32();
-                    count += id;
+                    sum += id;
                 }
 
-                counts.Add(count);
+                sums.Add(sum);
             }
 
-            return counts;
+            return sums;
         }
     }
 }
